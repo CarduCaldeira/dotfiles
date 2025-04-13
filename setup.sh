@@ -1,15 +1,17 @@
 #!/bin/bash
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 echo ">> Configuring AWS CLI..."
 mkdir -p ~/.aws
-envsubst < $(pwd)/credentials.template > ~/.aws/credentials
-cp $(pwd)/config ~/.aws/config
+envsubst < "$DIR/credentials.template" > ~/.aws/credentials
+cp "$DIR/config" ~/.aws/config
 
 echo ">> Applying VSCode settings..."
 mkdir -p ~/.config/Code/User
-ln -sf $(pwd)/settings.json ~/.config/Code/User/settings.json
+ln -sf "$DIR/settings.json" ~/.config/Code/User/settings.json
 
 echo ">> Applying gitconfig..."
-ln -sf $(pwd)/gitconfig ~/.gitconfig
+ln -sf "$DIR/gitconfig" ~/.gitconfig
 
 echo ">> Environment successfully configured."
