@@ -2,14 +2,14 @@
 
 echo ">> Configuring AWS CLI..."
 mkdir -p ~/.aws
-envsubst < $(pwd)/aws/credentials.template > ~/.aws/credentials
-cp $(pwd)/aws/config ~/.aws/config
+envsubst < $(pwd)/credentials.template > ~/.aws/credentials
+cp $(pwd)/config ~/.aws/config
 
 echo ">> Applying VSCode settings..."
 mkdir -p ~/.config/Code/User
-ln -sf $(pwd)/vscode/settings.json ~/.config/Code/User/settings.json
+ln -sf $(pwd)/settings.json ~/.config/Code/User/settings.json
 
 echo ">> Applying gitconfig..."
-ln -sf $(pwd)/git/gitconfig ~/.gitconfig
+ln -sf $(pwd)/gitconfig ~/.gitconfig
 
 echo ">> Environment successfully configured."
